@@ -19,10 +19,19 @@ head(hpc)
 #combining Date and Time as a single variable
 hpc$DateAndTime <- as.POSIXct(paste(hpc$Date, hpc$Time), format="%Y-%m-%d %H:%M:%S")
 
-#Plot 3
+#Code for Plot 3
 plot(hpc$DateAndTime, hpc$Sub_metering_1, type = "l", ylab = "Energy sub meter", xlab = " ")
 lines(hpc$DateAndTime, hpc$Sub_metering_2, col= "red")
 lines(hpc$DateAndTime, hpc$Sub_metering_3, col= "blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
-       col=c("black", "red", "blue"), lty=1:2, cex = 0.75)
+       col=c("black", "red", "blue"), lty = 1)
+
+#Creation of plot 3 in png format
+png(filename="plot3.png")
+plot(hpc$DateAndTime, hpc$Sub_metering_1, type = "l", ylab = "Energy sub meter", xlab = " ")
+lines(hpc$DateAndTime, hpc$Sub_metering_2, col= "red")
+lines(hpc$DateAndTime, hpc$Sub_metering_3, col= "blue")
+legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+       col=c("black", "red", "blue"), lty = 1)
+dev.off()
 
