@@ -19,6 +19,8 @@ head(hpc)
 #combining Date and Time as a single variable
 hpc$DateAndTime <- as.POSIXct(paste(hpc$Date, hpc$Time), format="%Y-%m-%d %H:%M:%S")
 
+#Code for Plot 4
+
 #Setting the parameter
 par(mfcol = c(2, 2), mar = c(4, 4, 2, 1))
 
@@ -37,3 +39,28 @@ plot(hpc$DateAndTime, hpc$Voltage, type = "l", ylab = "Voltage", xlab = "daytime
 
 #Plot 4d: Global Reactive Power
 plot(hpc$DateAndTime, hpc$Global_reactive_power, type = "l", ylab = "Global_reactive_power", xlab = "daytime")
+
+
+#Creation of plot 4 in png format
+png(filename="plot4.png")
+#Setting the parameter
+par(mfcol = c(2, 2), mar = c(4, 4, 2, 1))
+
+#Plot 4a: Global Active Power
+plot(hpc$DateAndTime, hpc$Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab = " ")
+
+#Plot 4b: Energy sub meter
+plot(hpc$DateAndTime, hpc$Sub_metering_1, type = "l", ylab = "Energy sub meter", xlab = " ")
+lines(hpc$DateAndTime, hpc$Sub_metering_2, col= "red")
+lines(hpc$DateAndTime, hpc$Sub_metering_3, col= "blue")
+legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"),
+       col=c("black", "red", "blue"), lty=1:2, cex = 0.75)
+
+#Plot 4c: voltage and daytime
+plot(hpc$DateAndTime, hpc$Voltage, type = "l", ylab = "Voltage", xlab = "daytime")
+
+#Plot 4d: Global Reactive Power
+plot(hpc$DateAndTime, hpc$Global_reactive_power, type = "l", ylab = "Global_reactive_power", xlab = "daytime")
+
+dev.off()
+
