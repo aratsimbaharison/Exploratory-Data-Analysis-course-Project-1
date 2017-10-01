@@ -16,6 +16,11 @@ HPC$Date <- as.Date(HPC$Date, "%d/%m/%Y")
 hpc <- HPC[HPC$Date == "2007-02-01" | HPC$Date == "2007-02-02",]
 head(hpc)
 
-#Plot 1
+#Code for Plot 1
 hist(hpc$Global_active_power, col = "red", xlab = "Global Active Power (kilowatt)", 
      ylab = "Frequency", main = "Global Active Power")
+
+#Creation of plot 1 in png format
+png(filename="plot1.png")
+hist(hpc$Global_active_power, xlab="Global Active Power", ylab = "Frequency", main = "Global Active Power", col="red")
+dev.off()
