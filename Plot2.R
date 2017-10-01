@@ -19,7 +19,11 @@ head(hpc)
 #combining Date and Time as a single variable
 hpc$DateAndTime <- as.POSIXct(paste(hpc$Date, hpc$Time), format="%Y-%m-%d %H:%M:%S")
 
-#Plot 2
+#Code for Plot 2
 plot(hpc$DateAndTime, hpc$Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab = " ")
 
+#Creation of plot 2 in png format
+png(filename="plot2.png")
+plot(hpc$DateAndTime, hpc$Global_active_power, type = "l", ylab = "Global Active Power (kilowatts)", xlab = " ")
+dev.off()
 
